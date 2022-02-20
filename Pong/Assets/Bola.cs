@@ -20,9 +20,21 @@ public class Bola : MonoBehaviour
         pelotaRb.velocity = new Vector2(xVelocidad, yVelocidad) * Velocidadincial;
     }
 
-
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Goal1"))
+        {
+            gamemanager.Instance.jugador1scored();
+            gamemanager.Instance.restart();
+            Launch();
+        }
+        else
+        {
+            gamemanager.Instance.jugador2scored();
+            gamemanager.Instance.restart();
+            Launch();
 
+        }
     }
+
 }
